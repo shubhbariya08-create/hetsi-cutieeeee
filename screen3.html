@@ -23,10 +23,13 @@ body{
   color:white;
 }
 
+/* Wrapper now horizontal */
 .wrapper{
   display:flex;
-  flex-direction:column;
-  gap:18px;
+  gap:16px;
+  flex-wrap:wrap; /* important for mobile */
+  justify-content:center;
+  max-width:95%;
 }
 
 /* Heart card */
@@ -90,9 +93,9 @@ body{
   100%{transform:translate(var(--x),var(--y)) scale(1);opacity:0}
 }
 
-/* Next */
+/* Next button */
 .next{
-  margin-top:25px;
+  margin-top:26px;
   font-size:15px;
   color:#ffd86b;
   cursor:pointer;
