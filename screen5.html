@@ -15,7 +15,7 @@
 
 body{
   height:100vh;
-  background:radial-gradient(circle at top, #2a2f6b, #05060f);
+  background:radial-gradient(circle at top, #1b2749, #090a1a); /* MATCHED */
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -121,7 +121,11 @@ body{
 <div class="next" onclick="goNext()">Tap for more ✨</div>
 
 <script>
+let interacted = false;
+
 function flip(el){
+  interacted = true;
+
   if(!el.classList.contains("flip")){
     const burst = el.querySelector(".burst");
     for(let i=0;i<6;i++){
@@ -139,6 +143,10 @@ function flip(el){
 }
 
 function goNext(){
+  if(!interacted){
+    alert("Tap the cloud first ☁️💗");
+    return;
+  }
   window.location.href="screen6.html";
 }
 </script>
