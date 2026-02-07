@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -15,7 +15,7 @@
 
 body{
   height:100vh;
-  background:radial-gradient(circle at top, #2a2f6b, #05060f);
+  background:radial-gradient(circle at top, #1b2749, #090a1a); /* matched */
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -23,11 +23,11 @@ body{
   color:white;
 }
 
-/* Wrapper now horizontal */
+/* Wrapper horizontal */
 .wrapper{
   display:flex;
   gap:16px;
-  flex-wrap:wrap; /* important for mobile */
+  flex-wrap:wrap;
   justify-content:center;
   max-width:95%;
 }
@@ -153,7 +153,11 @@ body{
 <div class="next" onclick="goNext()">Tap for more 💫</div>
 
 <script>
+let interacted = false;
+
 function flip(el){
+  interacted = true;
+
   if(!el.classList.contains("flip")){
     const burst = el.querySelector(".burst");
     for(let i=0;i<6;i++){
@@ -171,6 +175,10 @@ function flip(el){
 }
 
 function goNext(){
+  if(!interacted){
+    alert("Tap a heart first 💗");
+    return;
+  }
   window.location.href="screen4.html";
 }
 </script>
