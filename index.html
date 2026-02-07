@@ -1,84 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Just for you</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Something Just For You 💫</title>
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI', sans-serif;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-body{
-  height:100vh;
-  background:radial-gradient(circle at top, #2a2f6b, #05060f);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:white;
-}
+  body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #1b2749, #090a1a);
+    overflow: hidden;
+    color: white;
+  }
 
-/* Main container */
-.wrapper{
-  text-align:center;
-  max-width:90%;
-}
+  /* FULL SCREEN CLICK AREA */
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
 
-/* Main text */
-.main-text{
-  font-size:26px;
-  font-style:italic;
-  line-height:1.6;
-  color:rgba(255,255,255,0.85);
-  text-shadow:0 0 12px rgba(255,255,255,0.2);
-  animation:fadeIn 3s ease forwards;
-}
+  /* Moon */
+  .moon {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #fff 60%, #ddd);
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(255,255,255,0.6);
+    margin-bottom: 30px;
+  }
 
-/* Instruction text */
-.instruction{
-  margin-top:28px;
-  font-size:15px;
-  color:#ffd86b;
-  cursor:pointer;
-  text-shadow:0 0 8px rgba(255,216,107,0.7);
-  animation:glow 1.6s infinite alternate;
-}
+  /* Text box */
+  .text-box {
+    max-width: 90%;
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    font-style: italic;
+    letter-spacing: 1px;
+  }
 
-/* Animations */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(10px);}
-  to{opacity:1; transform:translateY(0);}
-}
+  .gold {
+    background: linear-gradient(90deg, #fff, #ffd700, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s infinite linear;
+  }
 
-@keyframes glow{
-  from{opacity:0.6;}
-  to{opacity:1;}
-}
+  @keyframes shine {
+    0% { background-position: 0%; }
+    100% { background-position: 200%; }
+  }
+
+  .hint {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-  <div class="main-text">
-    Hello Hetsi ji…<br>
-    Please don’t look like this,<br>
-    I might fall again and get lost in your eyes.
-  </div>
+<div class="container" id="nextScreen">
 
-  <div class="instruction" onclick="goNext()">
-    Tap gently ✨
-  </div>
+  <div class="moon"></div>
+
+  <div class="text-box gold" id="typeText"></div>
+
+  <div class="hint">Tap anywhere ✨</div>
+
 </div>
 
 <script>
-function goNext(){
-  window.location.href = "screen2.html";
-}
+  /* TYPEWRITER TEXT */
+  const text = `Hello Hetsi ji…
+
+Kitni pyaari lag rahi ho.
+Aise mat dekho…
+phir aankhon mein kho jaunga… 💫`;
+
+  let index = 0;
+  const speed = 60;
+  const target = document.getElementById("typeText");
+
+  function typeWriter() {
+    if (index < text.length) {
+      target.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  typeWriter();
+
+  /* CLICK → NEXT SCREEN */
+  document.getElementById("nextScreen").addEventListener("click", () => {
+    window.location.href = "screen2.html";
+  });
 </script>
 
 </body>
