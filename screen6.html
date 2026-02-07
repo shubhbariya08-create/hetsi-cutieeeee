@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Final Screen</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  height:100vh;
+  background:radial-gradient(circle at top, #2a2f6b, #05060f);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+}
+
+.wrapper{
+  text-align:center;
+  max-width:90%;
+}
+
+/* Fixed heart circle */
+.heart-circle{
+  width:90px;
+  height:90px;
+  background:#ff9fc9;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 auto 28px;
+  box-shadow:0 0 25px rgba(255,159,201,0.6);
+  animation:pulse 2s infinite;
+}
+
+.heart-circle span{
+  font-size:34px;
+  color:#ffd86b;
+}
+
+/* Typewriter text */
+.text{
+  font-size:20px;
+  line-height:1.6;
+  color:rgba(255,255,255,0.85);
+  text-shadow:0 0 10px rgba(255,255,255,0.25);
+  min-height:90px;
+}
+
+/* Animations */
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+  <div class="heart-circle">
+    <span>❤</span>
+  </div>
+
+  <div class="text" id="typeText"></div>
+</div>
+
+<script>
+const message = 
+`Sach mein…
+tu bahut, bahut pyaari hai.
+
+Shayad shabdon mein
+sab kuch keh paana mushkil ho,
+par dil se jo mehsoos hota hai,
+woh hamesha sach hota hai.
+
+Bas itna hi…`;
+
+let i = 0;
+const speed = 60;
+
+function typeWriter(){
+  if(i < message.length){
+    document.getElementById("typeText").innerHTML +=
+      message.charAt(i) === "\n" ? "<br>" : message.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+typeWriter(); // starts automatically on load
+</script>
+
+</body>
+</html>
